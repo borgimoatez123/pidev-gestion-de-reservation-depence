@@ -1,4 +1,4 @@
-package org.example.controllers;
+/*package org.example.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -83,4 +83,87 @@ public class BookingController {
     }
 
 
+}
+/* package org.example.controllers;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import org.example.dao.BookingDAO;
+import org.example.dao.Bookingimplt;
+import org.example.models.*;
+
+public class BookingController {
+
+    @FXML
+    private Label confirmationLabel;
+
+
+    private Flight selectedFlight;
+    private Hotel selectedHotel;
+    private ConferenceLocation selectedConference;
+    private Transport selectedTransport;
+
+    // Updated to receive actual objects instead of indices
+    public void setBookingData(Flight selectedFlight,
+                               Hotel selectedHotel,
+                               ConferenceLocation selectedConference,
+                               Transport selectedTransport) {
+        this.selectedFlight = selectedFlight;
+        this.selectedHotel = selectedHotel;
+        this.selectedConference = selectedConference;
+        this.selectedTransport = selectedTransport;
+
+        // Display confirmation details directly from objects
+        confirmationLabel.setText("Flight: " + selectedFlight.getAirline() +
+                "\nHotel: " + selectedHotel.getName() +
+                "\nConference Location: " + selectedConference.getName() +
+                "\nTransport: " + selectedTransport.getType());
+    }
+
+    @FXML
+    private void confirmBooking() {
+        BookingDAO bookingDAO = new Bookingimplt();
+        Booking booking = new Booking();
+
+        // Set flight details
+        booking.setFlightId(selectedFlight.getFlightId());
+        booking.setAirlines(selectedFlight.getAirline());
+        booking.setFlightPrice(selectedFlight.getPrice());
+        booking.setDepartureTime(selectedFlight.getDepartureTime());
+
+        // Set hotel details
+        booking.setHotelId(selectedHotel.getHotelId());
+        booking.setHotelName(selectedHotel.getName());
+        booking.setHotelLocation(selectedHotel.getLocation());
+        booking.setHotelPricePerNight(selectedHotel.getPricePerNight());
+        booking.setHotelRating(selectedHotel.getRating());
+
+        // Set conference details
+        booking.setConferenceLocationId(selectedConference.getLocationId());
+        booking.setConferenceName(selectedConference.getName());
+        booking.setConferencePricePerDay(selectedConference.getPricePerDay());
+
+        // Set transport details
+        booking.setTransportId(selectedTransport.getTransportId());
+        booking.setTransportType(selectedTransport.getType());
+        booking.setTransportPrice(selectedTransport.getPrice());
+        booking.setTransportDescription(selectedTransport.getDescription());
+
+        // Calculate total price (consider adding person count input)
+        int numberOfPeople = 2; // Should be dynamic input
+        double totalPrice = (selectedFlight.getPrice() +
+                selectedHotel.getPricePerNight() +
+                selectedConference.getPricePerDay() +
+                selectedTransport.getPrice()) * numberOfPeople;
+        booking.setPriceTotal(totalPrice);
+
+        // Common booking details
+        booking.setUserName("messi"); // Should be dynamic input
+        booking.setBookingDate(new java.sql.Date(System.currentTimeMillis()));
+        booking.setStatus("wait");
+
+        // Save booking
+        bookingDAO.save(booking);
+        confirmationLabel.setText("Booking Confirmed!\nTotal Price: $" + totalPrice);
+    }
 }
