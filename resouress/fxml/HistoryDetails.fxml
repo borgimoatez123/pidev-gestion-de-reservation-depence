@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.HistoryDetails">
+    <Label text="Booking Details" />
+    <TextField fx:id="bookingIdField" editable="false" promptText="Booking ID" />
+    <TextField fx:id="userNameField" editable="false" promptText="User Name" />
+    <TextField fx:id="flightIdField" editable="false" promptText="Flight ID" />
+    <TextField fx:id="hotelIdField" editable="false" promptText="Hotel ID" />
+    <TextField fx:id="transportIdField" editable="false" promptText="Transport ID" />
+    <TextField fx:id="conferenceLocationIdField" editable="false" promptText="Conference Location ID" />
+    <TextField fx:id="airlinesField" editable="false" promptText="Airlines" />
+    <TextField fx:id="flightPriceField" editable="false" promptText="Flight Price" />
+    <TextField fx:id="departureTimeField" editable="false" promptText="Departure Time" />
+
+    <!-- Payment Button -->
+    <Button text="Proceed to Payment" onAction="#navigateToPayment" />
+</VBox>

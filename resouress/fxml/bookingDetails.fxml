@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.BookingDetailsController">
+    <Label text="Booking ID:" />
+    <TextField fx:id="bookingIdField" editable="false" />
+
+    <Label text="User Name:" />
+    <TextField fx:id="userNameField" editable="false" />
+
+    <Label text="Flight ID:" />
+    <TextField fx:id="flightIdField" editable="false" />
+
+    <Label text="Hotel ID:" />
+    <TextField fx:id="hotelIdField" editable="false" />
+
+    <Label text="Transport ID:" />
+    <TextField fx:id="transportIdField" editable="false" />
+
+    <Label text="Conference Location ID:" />
+    <TextField fx:id="conferenceLocationIdField" editable="false" />
+
+    <Label text="Airlines:" />
+    <TextField fx:id="airlinesField" editable="false" />
+
+    <Label text="Flight Price:" />
+    <TextField fx:id="flightPriceField" editable="false" />
+
+    <Label text="Departure Time:" />
+    <TextField fx:id="departureTimeField" editable="false" />
+
+    <Button text="Confirm" onAction="#confirmBooking" />
+    <Button text="Not Confirm" onAction="#notConfirmBooking" />
+</VBox>
